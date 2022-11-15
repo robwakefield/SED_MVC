@@ -6,7 +6,11 @@ import java.awt.event.ActionListener;
 public class RPCgui {
 
   private final View view = new View(new Controller());
-  private final Model expressionCalc = new Model(view);
+  private final Model expressionCalc = new Model();
+
+  public RPCgui () {
+    expressionCalc.addObserver(view);
+  }
 
   class Controller implements ActionListener {
     @Override

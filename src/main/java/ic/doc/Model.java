@@ -1,20 +1,25 @@
 package ic.doc;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Model {
-  private final View view;
-
+  private final List<View> views = new ArrayList<View>();
   private final Stack<Integer> stack = new Stack<Integer>();
 
-  public Model (View view) {
-    this.view = view;
+  public void addObserver (View view) {
+    views.add(view);
+  }
+
+  private void notifyObservers () {
+    for (View view : views)
+      view.update(this);
   }
 
   public void push (int item) {
     stack.push(item);
-    view.update(this);
+    notifyObservers();
   }
 
   private int pop () {
@@ -31,7 +36,7 @@ public class Model {
 
   public void clear() {
     stack.clear();
-    view.update(this);
+    notifyObservers();
   }
 
   public void add() {
