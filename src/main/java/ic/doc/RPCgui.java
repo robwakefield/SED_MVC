@@ -8,8 +8,18 @@ public class RPCgui {
   private final View view = new View(new Controller());
   private final Model expressionCalc = new Model();
 
-  public RPCgui () {
-    expressionCalc.addObserver(view);
+  private RPCgui (boolean withView) {
+    if (withView) {
+      expressionCalc.addObserver(view);
+    }
+  }
+
+  static RPCgui withView() {
+    return new RPCgui(true);
+  }
+
+  static RPCgui withoutView() {
+    return new RPCgui(false);
   }
 
   class Controller implements ActionListener {
@@ -26,7 +36,7 @@ public class RPCgui {
   }
 
   public static void main(String[] args) {
-    new RPCgui();
+    RPCgui.withView();
   }
 
 }
