@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class RPCguiTest {
+public class ReversePolishGuiTest {
 
   private final TextView txtView = new TextView();
   private final Model model = new Model();

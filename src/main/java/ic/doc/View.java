@@ -1,13 +1,16 @@
 package ic.doc;
 
-import javax.swing.*;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 
 public class View implements Updatable {
 
   private final JTextField txtField = new JTextField(10);
 
-  public View (ActionListener controller) {
+  public View(ActionListener controller) {
     JFrame frame = new JFrame("Reverse Polish Calculator");
     frame.setSize(350, 200);
 

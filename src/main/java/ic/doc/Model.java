@@ -8,16 +8,17 @@ public class Model {
   private final List<Updatable> views = new ArrayList<Updatable>();
   private final Stack<Integer> stack = new Stack<Integer>();
 
-  public void addObserver (Updatable view) {
+  public void addObserver(Updatable view) {
     views.add(view);
   }
 
-  private void notifyObservers () {
-    for (Updatable view : views)
+  private void notifyObservers() {
+    for (Updatable view : views) {
       view.update(this);
+    }
   }
 
-  public void push (int item) {
+  public void push(int item) {
     stack.push(item);
     notifyObservers();
   }

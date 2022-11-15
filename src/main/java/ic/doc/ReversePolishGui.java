@@ -3,12 +3,12 @@ package ic.doc;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RPCgui {
+public class ReversePolishGui {
 
   private final Updatable view = new View(new Controller());
   private final Model expressionCalc = new Model();
 
-  public RPCgui() {
+  public ReversePolishGui() {
     expressionCalc.addObserver(view);
   }
 
@@ -26,7 +26,7 @@ public class RPCgui {
   }
 
   public static void main(String[] args) {
-    new RPCgui();
+    new ReversePolishGui();
   }
 
 }
