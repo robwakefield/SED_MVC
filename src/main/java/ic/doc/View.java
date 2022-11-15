@@ -3,7 +3,7 @@ package ic.doc;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class View {
+public class View implements Updatable {
 
   private final JTextField txtField = new JTextField(10);
 
@@ -35,8 +35,8 @@ public class View {
     frame.setVisible(true);
   }
 
-  public void update (Model model) {
+  @Override
+  public void update(Model model) {
     txtField.setText(model.stackToString());
   }
-
 }

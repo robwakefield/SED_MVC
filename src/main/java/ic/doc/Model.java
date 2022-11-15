@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Stack;
 
 public class Model {
-  private final List<View> views = new ArrayList<View>();
+  private final List<Updatable> views = new ArrayList<Updatable>();
   private final Stack<Integer> stack = new Stack<Integer>();
 
-  public void addObserver (View view) {
+  public void addObserver (Updatable view) {
     views.add(view);
   }
 
   private void notifyObservers () {
-    for (View view : views)
+    for (Updatable view : views)
       view.update(this);
   }
 
@@ -22,16 +22,12 @@ public class Model {
     notifyObservers();
   }
 
-  private int pop () {
-    return stack.pop();
-  }
-
   public String stackToString() {
     StringBuilder stringBuilder = new StringBuilder();
     for (int elem : stack.stream().toList()) {
       stringBuilder.append(elem).append(" ");
     }
-    return stringBuilder.toString();
+    return stringBuilder.toString().strip();
   }
 
   public void clear() {

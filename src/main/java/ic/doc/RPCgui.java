@@ -5,21 +5,11 @@ import java.awt.event.ActionListener;
 
 public class RPCgui {
 
-  private final View view = new View(new Controller());
+  private final Updatable view = new View(new Controller());
   private final Model expressionCalc = new Model();
 
-  private RPCgui (boolean withView) {
-    if (withView) {
-      expressionCalc.addObserver(view);
-    }
-  }
-
-  static RPCgui withView() {
-    return new RPCgui(true);
-  }
-
-  static RPCgui withoutView() {
-    return new RPCgui(false);
+  public RPCgui() {
+    expressionCalc.addObserver(view);
   }
 
   class Controller implements ActionListener {
@@ -36,7 +26,7 @@ public class RPCgui {
   }
 
   public static void main(String[] args) {
-    RPCgui.withView();
+    new RPCgui();
   }
 
 }
