@@ -35,4 +35,8 @@ public class View {
     frame.setVisible(true);
   }
 
+  public void update (Model model) {
+    txtField.setText(model.stackToString());
+  }
+
 }

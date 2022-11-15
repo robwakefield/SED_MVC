@@ -1,41 +1,28 @@
 package ic.doc;
 
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RPCgui {
-  private void display() {
-    JFrame frame = new JFrame("Reverse Polish Calculator");
-    frame.setSize(350, 200);
 
-    JPanel panel = new JPanel();
+  private final View view = new View(new Controller());
+  private final Model expressionCalc = new Model(view);
 
-    final JTextField txtField = new JTextField(10);
-
-    for (int i = 1; i < 5; i++) {
-      JButton button = new JButton(String.valueOf(i));
-      int finalI = i;
-      button.addActionListener(e -> txtField.setText(String.valueOf(finalI)));
-      panel.add(button);
+  class Controller implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      String label = e.getActionCommand();
+      switch (label) {
+        case "Clear" -> expressionCalc.clear();
+        case "+" -> expressionCalc.add();
+        case "-" -> expressionCalc.sub();
+        default -> expressionCalc.push(Integer.parseInt(label));
+      }
     }
-    JButton addButton = new JButton("+");
-    addButton.addActionListener(e -> txtField.setText("+"));
-    panel.add(addButton);
-    JButton subButton = new JButton("-");
-    subButton.addActionListener(e -> txtField.setText("-"));
-    panel.add(subButton);
-
-    panel.add(txtField);
-
-    JButton clearButton = new JButton("Clear");
-    clearButton.addActionListener(e -> txtField.setText(""));
-    panel.add(clearButton);
-
-    frame.getContentPane().add(panel);
-    frame.setVisible(true);
   }
 
   public static void main(String[] args) {
-    new RPCgui().display();
+    new RPCgui();
   }
 
 }
