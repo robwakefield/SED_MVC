@@ -22,7 +22,11 @@ public class Model {
   }
 
   public String stackToString() {
-    return Arrays.toString(stack.toArray());
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int elem : stack.stream().toList()) {
+      stringBuilder.append(elem).append(" ");
+    }
+    return stringBuilder.toString();
   }
 
   public void clear() {
